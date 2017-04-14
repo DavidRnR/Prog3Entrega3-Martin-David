@@ -7,7 +7,7 @@ public class AlgoritmosSobreGrafo {
 
 
 	/**
-	 * Comprueba si un grafo tiene ciclo utilizando la recursión
+	 * Comprueba si un grafo tiene ciclo utilizando la recursiï¿½n
 	 * @param grafo
 	 * @return
 	 */
@@ -23,7 +23,7 @@ public class AlgoritmosSobreGrafo {
 
 		for (int i = 0; i < grafo.getSize(); i++) {
 			if (tieneCicloRecursivo(grafo, grafo.getVertice(i), estados))
-				return true;	
+				return true;
 		}
 
 		return false;
@@ -51,7 +51,7 @@ public class AlgoritmosSobreGrafo {
 
 		return false;
 	}
-	
+
 	/**
 	 * Comprueba si un grafo tiene ciclo utilizando una pila (Stack)
 	 * @param grafo
@@ -70,7 +70,7 @@ public class AlgoritmosSobreGrafo {
 		return tieneCicloPila(grafo, estados);
 
 	}
-	
+
 	private static boolean tieneCicloPila(GrafoDirigido grafo, Estado[] estados) {
 
 		Stack<Integer> pila = new Stack<Integer>();
@@ -85,11 +85,11 @@ public class AlgoritmosSobreGrafo {
 					estados[pila.peek()] = Estado.VISITANDOSE;
 
 					List<Integer> adyacentes = grafo.getAdyacentes(pila.peek());
-					
+
 					//Si contiene adyacentes
-					if(adyacentes.size() > 0 ) {		
-						
-						
+					if(adyacentes.size() > 0 ) {
+
+
 						for (int i = 0; i < adyacentes.size(); i++) {
 							if(estados[adyacentes.get(i)] == Estado.NO_VISITADO){
 								pila.push(adyacentes.get(i));
@@ -107,11 +107,11 @@ public class AlgoritmosSobreGrafo {
 					}
 				}
 
-				else if(estados[pila.peek()] == Estado.VISITADO){//negro
+				else if(estados[pila.peek()] == Estado.VISITADO){
 					pila.pop();
 				}
 				else{
-					estados[pila.peek()] = Estado.VISITADO ;//amarillo
+					estados[pila.peek()] = Estado.VISITADO ;
 					pila.pop();
 				}
 
