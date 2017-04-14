@@ -6,7 +6,11 @@ public class AlgoritmosSobreGrafo {
 	private enum Estado { VISITADO, NO_VISITADO, VISITANDOSE };
 
 
-
+	/**
+	 * Comprueba si un grafo tiene ciclo utilizando la recursión
+	 * @param grafo
+	 * @return
+	 */
 	public static boolean DFSForestRecursivo (GrafoDirigido grafo) {
 
 		Estado [] estados;
@@ -47,7 +51,12 @@ public class AlgoritmosSobreGrafo {
 
 		return false;
 	}
-
+	
+	/**
+	 * Comprueba si un grafo tiene ciclo utilizando una pila (Stack)
+	 * @param grafo
+	 * @return
+	 */
 	public static boolean DFSForestStack (GrafoDirigido grafo) {
 
 		Estado [] estados;
@@ -61,13 +70,13 @@ public class AlgoritmosSobreGrafo {
 		return tieneCicloPila(grafo, estados);
 
 	}
-
+	
 	private static boolean tieneCicloPila(GrafoDirigido grafo, Estado[] estados) {
 
 		Stack<Integer> pila = new Stack<Integer>();
 		int vertice = grafo.getVertice(0);
 
-		while(vertice < estados.length){//este while es por si hay un vertice sin estar en el grafo que tiene ciclo
+		while(vertice < estados.length){
 			pila.push(vertice);
 
 			while(!pila.isEmpty()) {
@@ -77,6 +86,7 @@ public class AlgoritmosSobreGrafo {
 
 					List<Integer> adyacentes = grafo.getAdyacentes(pila.peek());
 					
+					//Si contiene adyacentes
 					if(adyacentes.size() > 0 ) {		
 						
 						
@@ -90,7 +100,8 @@ public class AlgoritmosSobreGrafo {
 						}
 
 					}
-					else{//no tiene adyacentes
+					//Sino contiene adyacentes
+					else{
 						estados[pila.peek()] = Estado.VISITADO;
 						pila.pop();
 					}

@@ -23,7 +23,8 @@ public class Sim {
 		System.out.println("DFS Stack: "+AlgoritmosSobreGrafo.DFSForestStack(grafo));
 		
 		//******************Hacemos un ciclo***************************
-		grafo.addArco(1, 0);
+		grafo.addArco(400, 401);
+		grafo.addArco(401, 400);
 		
 		//Volvemos a chequear
 		
@@ -31,6 +32,9 @@ public class Sim {
 		
 		
 		System.out.println("DFS Stack: "+AlgoritmosSobreGrafo.DFSForestStack(grafo));
+		
+		// DFS: Recursivo ocupa mucho más memoria (Se colgó la computadora con una cantidad de Vertices significativa, con el grafo sin ciclo)
+		// DFS: ultilanzando una pila no se cuelga, parece mucho mas efectivo.
 		
 	}
 }
